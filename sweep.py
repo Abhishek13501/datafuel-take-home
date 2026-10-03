@@ -457,4 +457,4 @@ if __name__ == "__main__":
     save_stores(conn, stores)
     conn.close()
 
-    run_sweep("2026-09-27T19:00:00Z")
+    run_sweep("2026-09-28T18:40:00Z")
