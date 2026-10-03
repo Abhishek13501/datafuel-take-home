@@ -344,8 +344,18 @@ def run_sweep(as_of):
                 pacer
             )
             if partial:
-                print("  Incomplete snapshot - not saving as complete")
+                save_sweep(
+                    conn,
+                    store_id,
+                    as_of,
+                    items,
+                    True,
+                    observed_at,
+                    "partial"
+                )
+
                 failed += 1
+                print("  Incomplete snapshot - saved as partial")
                 continue
 
             sweep_id = save_sweep(
