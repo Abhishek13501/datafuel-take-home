@@ -172,6 +172,9 @@ def fetch_inventory(store_id, as_of, pacer):
                         )
 
                         if response.status_code == 429:
+                            if attempt == 2:
+                                response.raise_for_status()
+
                             retry_after = int(
                                 response.headers.get("Retry-After", "2")
                             )
@@ -454,4 +457,4 @@ if __name__ == "__main__":
     save_stores(conn, stores)
     conn.close()
 
-    run_sweep("2026-09-27T04:30:00Z")
+    run_sweep("2026-09-27T19:00:00Z")
