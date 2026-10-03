@@ -6,7 +6,7 @@ The complete development session was screen recorded as required by the assignme
 
 Recording link:
 
-`<ADD RECORDING LINK HERE>`
+https://drive.google.com/file/d/1OKuSgNre-LkmPa474I9Mn-fpacfqENqq/view?usp=sharing
 
 ## Technical Walkthrough
 
@@ -36,9 +36,9 @@ Required sweep timestamps:
 - `2026-09-28T10:30:00Z`
 - `2026-09-28T18:40:00Z`
 
-The sixth required sweep completed with all 26 active stores.
+The required sweeps were completed, with one partial store snapshot for DEL-004 at `2026-09-28T10:30:00Z`.
 
-The `2026-09-28T10:30:00Z` sweep contained one partial store snapshot for DEL-004, which is excluded from OSA calculations and reported in coverage.
+The partial snapshot is excluded from OSA calculations and reported in coverage.
 
 ## Final API Verification
 
