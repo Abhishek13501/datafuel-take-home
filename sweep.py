@@ -2,6 +2,8 @@ from datetime import datetime, timezone
 import sqlite3
 import requests
 import time
+import argparse
+
 DB = "osa.db"
 class SoftBanned(Exception):
     pass
@@ -449,12 +451,20 @@ def run_sweep(as_of):
 
 
 if __name__ == "__main__":
-    init_db()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--as-of", required=True)
+    args = parser.parse_args()
 
-    stores = fetch_stores()
+    value = args.as_of
 
-    conn = sqlite3.connect(DB)
-    save_stores(conn, stores)
-    conn.close()
+    if value.endswith("Z"):
+        value = value[:-1] + "+00:00"
 
-    run_sweep("2026-09-28T18:40:00Z")
+    dt = datetime.fromisoformat(value)
+
+    if dt.tzinfo is None:
+        raise ValueError("--as-of must include a timezone")
+
+    as_of = dt.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+
+    run_sweep(as_of)
